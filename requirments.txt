@@ -1,0 +1,7 @@
+numpy
+pandas
+scipy
+scikit-learn
+xgboost==3.3.0
+torch==2.8.0
+datasets
