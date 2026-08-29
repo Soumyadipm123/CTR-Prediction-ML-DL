@@ -16,7 +16,7 @@ The objective is to investigate how different modeling approaches perform on a d
 
 ## Dataset
 
-The project uses the `reczoo/Criteo_x1` dataset from Hugging Face.
+The project uses the **`reczoo/Criteo_x1`** dataset from Hugging Face.
 
 For experimentation, 100,000 samples were used.
 
@@ -26,7 +26,7 @@ For experimentation, 100,000 samples were used.
 - Numerical features: 13
 - Categorical features: 26
 - Total input features: 39
-- Target: `label`
+- Target: **`label`**
 - Click-through rate: approximately 25.21%
 
 ### Data Split
@@ -56,7 +56,28 @@ Different approaches were used for the models:
 
 The one-hot encoded representation used by XGBoost resulted in:
 
+
 ```text
-Training matrix:   70,000 × 122,659
+Training matrix: 70,000 × 122,659
 Validation matrix: 15,000 × 122,659
-Test matrix:       15,000 × 122,659
+Test matrix: 15,000 × 122,659
+```
+## Results
+
+The three models were evaluated on the held-out test set using Accuracy, Precision, Recall, F1-score, ROC-AUC, and Log Loss.
+
+| Model | Accuracy | Precision | Recall | F1 Score | ROC-AUC | Log Loss |
+|---|---:|---:|---:|---:|---:|---:|
+| Logistic Regression | 75.99% | 53.73% | **34.24%** | **41.83%** | 0.7402 | 0.5133 |
+| XGBoost | **77.72%** | **64.47%** | 25.91% | 36.97% | **0.7543** | **0.4824** |
+| ANN | 76.93% | 58.21% | 30.17% | 39.74% | 0.7342 | 0.4991 |
+
+### Model Comparison
+
+- **XGBoost** achieved the highest accuracy (77.72%), precision (64.47%), ROC-AUC (0.7543), and the lowest Log Loss (0.4824).
+
+- **Logistic Regression** achieved the highest recall (34.24%) and F1-score (41.83%) among the three models.
+
+- **ANN** achieved 76.93% accuracy, 58.21% precision, 30.17% recall, 39.74% F1-score, 0.7342 ROC-AUC, and 0.4991 Log Loss.
+
+Overall, **XGBoost performed best in terms of accuracy, precision, ROC-AUC, and Log Loss**, while **Logistic Regression performed best in terms of recall and F1-score**.
